@@ -5,15 +5,21 @@ namespace dotNet_Learnings
 {
     class average{
 
-        static List<double> AboveAVG(List<double> l, double avg){
+        static (List<double>, List<double>) AVG(List<double> l, double avg){
             List<double> AbvAVG = new List<double>();
+            List<double> BlwAVG = new List<double>();
 
             foreach (double i in l){
                 if (i>avg){
-                    List.Add()
+                    AbvAVG.Add(i);
+                } else if (i < avg){
+                    BlwAVG.Add(i);
                 }
             }
+
+            return (AbvAVG, BlwAVG);
         }
+
         static void Main(string[] args){
             Console.Write("ENTER A LENGTH OF ARRAY: ");
             string len_ = Console.ReadLine();
@@ -33,7 +39,20 @@ namespace dotNet_Learnings
 
             double average = sum/len;
 
-            Console.WriteLine($"\n\nAVERAGE: {average}");
+            Console.WriteLine($"\n\n> AVERAGE: {average}");
+
+            var (AbvAVG, BlwAVG) = AVG(A, average);
+
+            Console.Write("> ABOVE AVERAGE:");
+            foreach (double i in AbvAVG){
+                Console.Write($" {i}");
+            }
+            Console.WriteLine();
+            Console.Write("> BELOW AVERAGE:");
+            foreach (double i in BlwAVG){
+                Console.Write($" {i}");
+            }
+            Console.WriteLine();
         }
     }
 }
